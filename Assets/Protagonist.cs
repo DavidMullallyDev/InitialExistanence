@@ -3,6 +3,9 @@ using UnityEngine.InputSystem;
 
 public class Protagonist : MonoBehaviour
 {
+   [SerializeField] float moveSpeed = 0.05f;
+   [SerializeField] float turnSpeed = 1.5f;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -12,22 +15,29 @@ public class Protagonist : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float move = 0;
+        float steer = 0;
+
+        //forwards/backwards
         if (Keyboard.current.wKey.isPressed)
         {
-            transform.Translate(0, 0.01f, 0);
+            move = 1f;
         }
         else if (Keyboard.current.sKey.isPressed)
         {
-            transform.Translate(0, -0.01f, 0);
+            move = -1f;
         }
+        transform.Translate(0, move * moveSpeed, 0);
 
+        //rotate anti-/clockwise
         if (Keyboard.current.aKey.isPressed)
         {
-            transform.Translate(-0.01f, 0, 0);
+            steer = 1f;
         }
         else if (Keyboard.current.dKey.isPressed)
         {
-            transform.Translate(0.01f, 0, 0);
+            steer = -1f;
         }
+        transform.Rotate(0, 0, turnSpeed * steer);
     }
 }
