@@ -3,8 +3,8 @@ using UnityEngine.InputSystem;
 
 public class Protagonist : MonoBehaviour
 {
-   [SerializeField] float moveSpeed = 0.05f;
-   [SerializeField] float turnSpeed = 1.5f;
+   [SerializeField] float moveSpeed = 10f;
+   [SerializeField] float steerSpeed = 200f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -25,10 +25,9 @@ public class Protagonist : MonoBehaviour
         }
         else if (Keyboard.current.sKey.isPressed)
         {
-            move = -1f;
+            move = -1f;    
         }
-        transform.Translate(0, move * moveSpeed, 0);
-
+        
         //rotate anti-/clockwise
         if (Keyboard.current.aKey.isPressed)
         {
@@ -38,6 +37,10 @@ public class Protagonist : MonoBehaviour
         {
             steer = -1f;
         }
-        transform.Rotate(0, 0, turnSpeed * steer);
+
+        float moveAmt = move * moveSpeed * Time.deltaTime;
+        float steerAmt = steer * steerSpeed * Time.deltaTime;
+        transform.Translate(0, moveAmt, 0);
+        transform.Rotate(0, 0, steerSpeed * steerAmt);
     }
 }
