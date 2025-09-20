@@ -97,3 +97,8 @@ InitTestScene*.unity*
 
 # Auto-generated scenes by play mode tests
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
+
+# Imported Assest
+/[Aa]ssets/GameDev.tv - Delivery Dash Assets
+/[Aa]ssets/PostApocalypse_AssetPack_v1.1.2
+/[Aa]ssets/Robot Warfare Asset Pack 22-11-24
